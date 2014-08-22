@@ -16,4 +16,4 @@ class sintegraPiSpider(BaseSpider):
         ## Getting the complete url.
         img_url = self.base_url + img_addr
         ## Using the Images Pipeline, we just need to create an Item.
-        return BaseSpider.create_image_item(img_url)
+        return self.create_image_item(img_url)
