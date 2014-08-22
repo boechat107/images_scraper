@@ -1,10 +1,13 @@
 from scrapy import Spider
-from images_scraper.items import ImagesScraperItem
+from images_scraper.spiders.base_spider import BaseSpider
 
-class sintegraPiSpider(Spider):
+class sintegraPiSpider(BaseSpider):
     name = "sintegraPi"
     base_url = 'http://webas.sefaz.pi.gov.br/SintegraConsultaPublica'
-    start_urls = [base_url]
+
+    def __init__(self, *args, **kwargs):
+        super(sintegraPiSpider, self).__init__(base_url=self.base_url, 
+                                               *args, **kwargs)
 
     def parse(self, response):
         ## Parsing the captcha's image url.
@@ -13,6 +16,4 @@ class sintegraPiSpider(Spider):
         ## Getting the complete url.
         img_url = self.base_url + img_addr
         ## Using the Images Pipeline, we just need to create an Item.
-        item = ImagesScraperItem()
-        item['image_urls'] = [img_url]
-        return item
+        return BaseSpider.create_image_item(img_url)
