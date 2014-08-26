@@ -14,6 +14,7 @@ SPIDER_MODULES = ['images_scraper.spiders']
 NEWSPIDER_MODULE = 'images_scraper.spiders'
 
 AUTOTHROTTLE_ENABLED = True
+DOWNLOAD_DELAY = 0.25
 RANDOMIZE_DOWNLOAD_DELAY = True
 USER_AGENT = 'Mozilla/5.0 (X11; Linux i686; rv:23.0) Gecko/20100101 Firefox/23.0'
 
